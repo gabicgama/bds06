@@ -9,6 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.devsuperior.movieflix.dto.ReviewDTO;
 import com.devsuperior.movieflix.entities.Review;
+import com.devsuperior.movieflix.entities.User;
 import com.devsuperior.movieflix.repositories.MovieRepository;
 import com.devsuperior.movieflix.repositories.ReviewRepository;
 import com.devsuperior.movieflix.repositories.UserRepository;
@@ -25,6 +26,9 @@ public class ReviewService {
 	@Autowired
 	MovieRepository movieRepository;
 
+	@Autowired
+	AuthService authService;
+
 	@Transactional(readOnly = true)
 	public List<ReviewDTO> findAll() {
 		List<Review> list = repository.findAll();
@@ -33,16 +37,17 @@ public class ReviewService {
 
 	@Transactional()
 	public ReviewDTO insert(ReviewDTO dto) {
+		User user = authService.authenticated();
 		Review entity = new Review();
-		copyDtoToEntity(dto, entity);
+		copyDtoToEntity(dto, entity, user);
 		entity = repository.save(entity);
-		return new ReviewDTO(entity);
+		return new ReviewDTO(entity, user);
 	}
 
-	private void copyDtoToEntity(ReviewDTO dto, Review entity) {
+	private void copyDtoToEntity(ReviewDTO dto, Review entity, User user) {
 		entity.setId(dto.getId());
 		entity.setText(dto.getText());
-		entity.setUser(userRepository.getOne(dto.getUserId()));
+		entity.setUser(user);
 		entity.setMovie(movieRepository.getOne(dto.getMovieId()));
 	}
 }
