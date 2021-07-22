@@ -49,7 +49,7 @@ public class ReviewDTO implements Serializable {
 	private UserDTO convertUserToUserDTO(User entity) {
 		UserDTO dto = new UserDTO();
 		dto.setId(entity.getId());
-		dto.setName(entity.getEmail());
+		dto.setName(entity.getName());
 		dto.setEmail(entity.getEmail());
 		return dto;
 	}
