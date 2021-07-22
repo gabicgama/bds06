@@ -1,0 +1,35 @@
+.result-container {
+  padding: 10px;
+}
+
+.result-author {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 5px;
+}
+
+.result-author img {
+  width: 14px;
+  height: 16px;
+}
+
+.result-author h3 {
+  font-weight: bold;
+  font-size: 16px;
+  margin-left: 10px;
+  color: #fff;
+}
+
+.result-text {
+  border: 1px solid #e1e1e1;
+  border-radius: 4px;
+  padding: 10px;
+}
+
+.result-text p {
+  font-weight: normal;
+  font-size: 16px;
+  color: #9e9e9e;
+}

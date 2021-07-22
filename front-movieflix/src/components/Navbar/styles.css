@@ -1,0 +1,47 @@
+.main-nav {
+  background-color: #ffc700;
+  height: 68px;
+}
+
+.nav-logo-text h1 {
+  font-size: 24px;
+  font-weight: 700;
+  color: #000;
+  letter-spacing: -0.015em;
+}
+
+.button-logout-container {
+  justify-content: center;
+  text-align: center;
+  justify-items: center;
+}
+
+.button-logout {
+  text-align: center;
+  border: 1px solid #000000;
+  border-radius: 10px;
+  width: 100px;
+  height: 30px;
+  font-size: 13px;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+@media (min-width: 500px) {
+  .nav-logo-text {
+    margin-left: 30px;
+  }
+
+  .button-nav {
+    margin-right: 20px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .nav-logo-text {
+    margin-left: 50px;
+  }
+
+  .button-nav {
+    margin-right: 35px;
+  }
+}

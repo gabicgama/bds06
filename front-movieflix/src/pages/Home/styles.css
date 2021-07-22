@@ -1,0 +1,125 @@
+.home-container {
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.home-content-container {
+  display: none;
+}
+
+.card-form-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  width: 290px;
+  height: 464px;
+  background: #6c6c6c;
+  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.25);
+  border-radius: 4px;
+}
+
+.card-form-container h1 {
+  text-align: center;
+  font-weight: normal;
+  font-size: 36px;
+  letter-spacing: -0.015em;
+  color: #fff;
+  text-transform: uppercase;
+  padding: 60px 60px 40px 60px;
+}
+
+.form-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.form-container input {
+  margin-bottom: 20px;
+  background: #fefefe;
+  border: 1px solid #fefefe;
+  border-radius: 4px;
+  width: 264px;
+  height: 47px;
+  padding-left: 14px;
+  color: #9e9e9e;
+  font-size: 16px;
+}
+
+.form-container button {
+  margin-top: 30px;
+  width: 264px;
+  height: 50px;
+  font-weight: bold;
+  font-size: 20px;
+  color: #000;
+  text-transform: uppercase;
+  align-items: center;
+  text-align: center;
+  letter-spacing: -0.015em;
+}
+
+@media (min-width: 500px) {
+  .card-form-container {
+    width: 80%;
+  }
+}
+
+@media (min-width: 1200px) {
+  .home-container {
+    flex-direction: row;
+    justify-content: space-around;
+    padding: 40px;
+  }
+
+  .home-content-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 479px;
+    height: 573px;
+  }
+
+  .home-content-container h1 {
+    margin-top: 40px;
+    font-size: 48px;
+    letter-spacing: -0.015em;
+  }
+
+  .home-content-container p {
+    margin-top: 20px;
+    margin-bottom: 50px;
+    width: 350px;
+    font-size: 22px;
+    letter-spacing: -0.015em;
+    color: #f2f2f2;
+    padding-left: 20px;
+  }
+
+  .home-image-container svg {
+    width: 381.89px;
+    height: 264.94px;
+  }
+
+  .card-form-container {
+    width: 479px;
+    height: 573px;
+  }
+
+  .card-form-container h1 {
+    font-size: 48px;
+  }
+
+  .form-container input {
+    width: 384px;
+    height: 46, 88px;
+  }
+
+  .form-container button {
+    width: 384px;
+    height: 46, 88px;
+  }
+}
