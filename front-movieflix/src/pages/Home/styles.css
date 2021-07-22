@@ -62,9 +62,20 @@
   letter-spacing: -0.015em;
 }
 
-@media (min-width: 500px) {
+@media (min-width: 576px) {
   .card-form-container {
-    width: 80%;
+    width: 450px;
+  }
+}
+
+@media (min-width: 768px) {
+  .home-container {
+    padding: 20px;
+  }
+
+  .card-form-container {
+    width: 550px;
+    height: 550px;
   }
 }
 

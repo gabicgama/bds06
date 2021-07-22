@@ -56,6 +56,7 @@ const MovieDetails = () => {
     };
     setReview(true);
     requestBackend(params);
+    setFormData({ review: "" });
   };
 
   return (
