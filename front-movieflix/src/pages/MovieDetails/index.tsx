@@ -1,6 +1,6 @@
 import Reviews from "components/Reviews";
 import { AxiosRequestConfig } from "axios";
-import { Movie } from "types/movie";
+import { Review } from "types/review";
 import { requestBackend } from "util/requests";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
@@ -20,7 +20,7 @@ const MovieDetails = () => {
 
   const [review, setReview] = useState(false);
 
-  const [movie, setMovie] = useState<Array<Movie>>();
+  const [movie, setMovie] = useState<Array<Review>>();
 
   useEffect(() => {
     const params: AxiosRequestConfig = {
