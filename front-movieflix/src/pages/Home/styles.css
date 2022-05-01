@@ -9,6 +9,10 @@
   display: none;
 }
 
+.home-content-container h1 {
+  color: #fff;
+}
+
 .card-form-container {
   display: flex;
   flex-direction: column;

@@ -6,6 +6,8 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { hasAnyRole } from "util/auth";
 import "./styles.css";
+import { Movie } from "types/movie";
+import { toast } from "react-toastify";
 
 type UrlParams = {
   movieId: string;
@@ -18,9 +20,11 @@ type FormData = {
 const MovieDetails = () => {
   const { movieId } = useParams<UrlParams>();
 
-  const [review, setReview] = useState(false);
+  const [reviewList, setReviewList] = useState(false);
 
-  const [movie, setMovie] = useState<Array<Review>>();
+  const [movieReview, setMovieReview] = useState<Array<Review>>();
+
+  const [movie, setMovie] = useState<Movie>();
 
   useEffect(() => {
     const params: AxiosRequestConfig = {
@@ -28,10 +32,20 @@ const MovieDetails = () => {
       withCredentials: true,
     };
     requestBackend(params).then((response) => {
-      setMovie(response.data);
-      setReview(false);
+      setMovieReview(response.data);
+      setReviewList(false);
     });
-  }, [movieId, review]);
+  }, [movieId, reviewList]);
+
+  useEffect(() => {
+    const params: AxiosRequestConfig = {
+      url: `/movies/${movieId}`,
+      withCredentials: true,
+    };
+    requestBackend(params).then((response) => {
+      setMovie(response.data);
+    });
+  }, [movieId]);
 
   const [formData, setFormData] = useState<FormData>({
     review: "",
@@ -54,14 +68,32 @@ const MovieDetails = () => {
         movieId: movieId,
       },
     };
-    setReview(true);
-    requestBackend(params);
+    requestBackend(params)
+      .then((response) => {
+        toast.info("Avaliação adicionada!");
+      })
+      .catch(() => {
+        toast.error("Erro ao adicionar avaliação!");
+      });
     setFormData({ review: "" });
+    setReviewList(true);
   };
 
   return (
     <div className="movie-details-container">
-      <h1>Tela detalhes do filme id: {movieId}</h1>
+      <div className="base-card movie-details-info-container">
+        <div className="movie-details-img-container">
+          <img src={movie?.imgUrl} alt={movie?.title} />
+        </div>
+        <div className="movie-details-texts-container">
+          <h1>{movie?.title}</h1>
+          <h2>{movie?.year}</h2>
+          <p>{movie?.subTitle}</p>
+          <div className="movie-details-synopsis-container">
+            <p>{movie?.synopsis}</p>
+          </div>
+        </div>
+      </div>
       {hasAnyRole(["ROLE_MEMBER"]) && (
         <div className="card-revirew-container">
           <form onSubmit={handleSubmit}>
@@ -82,9 +114,9 @@ const MovieDetails = () => {
         </div>
       )}
       <div className="botton-card-review-container">
-        {movie?.map((movie) => (
-          <div key={movie.id}>
-            <Reviews author={movie.user.name} text={movie.text} />
+        {movieReview?.map((movieReview) => (
+          <div key={movieReview.id}>
+            <Reviews author={movieReview.user.name} text={movieReview.text} />
           </div>
         ))}
       </div>
